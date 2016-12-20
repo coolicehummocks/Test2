@@ -33,30 +33,48 @@ namespace Test2
 
         private void b_start_Click(object sender, EventArgs e)
         {
+            b_start.Enabled = false;
             bgWorker.RunWorkerAsync();
         }
 
         void DoWork(object sender, DoWorkEventArgs e)
         {
-            BackgroundWorker bgw = (BackgroundWorker)sender;
-            for (int i = 0; i < 100; i++)
+            try
             {
-                Thread.Sleep(100);
-                string message = transportSystem.Iterate();
-                bgw.ReportProgress(0, message);
+                BackgroundWorker bgw = (BackgroundWorker)sender;
+                for (int i = 0; i < 20; i++)
+                {
+                    Thread.Sleep(1000);
+                    string message = transportSystem.Iterate();
+                    bgw.ReportProgress(0, message);
+                }
+            }
+            catch (Exception err)
+            {
+                throw new Exception(err.Message);
             }
         }
 
         void ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            MessageTxBox.Text = MessageTxBox.Text + "\r\n" + e.UserState.ToString();
+            MessageTxBox.Text = MessageTxBox.Text  + e.UserState.ToString() + "\r\n";
             MessageTxBox.SelectionStart = MessageTxBox.Text.Length;
             MessageTxBox.ScrollToCaret();
         }
 
         void RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            MessageBox.Show("Sumilation finished");
+            b_start.Enabled = true;
+            if (e.Error != null)
+            {
+                MessageTxBox.Text = MessageTxBox.Text + "\r\n !!! Error: " + e.Error.Message + " !!!";
+                MessageTxBox.SelectionStart = MessageTxBox.Text.Length;
+                MessageTxBox.ScrollToCaret();
+            }
+            else
+            {
+                MessageBox.Show("Sumilation finished");
+            }
         }
   
     }

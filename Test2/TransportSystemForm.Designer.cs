@@ -35,7 +35,7 @@
             // 
             // b_start
             // 
-            this.b_start.Location = new System.Drawing.Point(12, 236);
+            this.b_start.Location = new System.Drawing.Point(12, 356);
             this.b_start.Name = "b_start";
             this.b_start.Size = new System.Drawing.Size(75, 23);
             this.b_start.TabIndex = 1;
@@ -45,17 +45,20 @@
             // 
             // MessageTxBox
             // 
+            this.MessageTxBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.MessageTxBox.Location = new System.Drawing.Point(12, 12);
             this.MessageTxBox.Multiline = true;
             this.MessageTxBox.Name = "MessageTxBox";
-            this.MessageTxBox.Size = new System.Drawing.Size(260, 218);
+            this.MessageTxBox.Size = new System.Drawing.Size(386, 338);
             this.MessageTxBox.TabIndex = 2;
             // 
             // TransportSystemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(410, 391);
             this.Controls.Add(this.MessageTxBox);
             this.Controls.Add(this.b_start);
             this.Name = "TransportSystemForm";
